@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}About — Owen Teo{% endblock %}
+
+{% block content %}
+<section class="section page-header">
+  <div class="container">
+    <h1>About</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        {% for para in profile.about %}
+        <p>{{ para }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="timeline">
+      {% for job in experience %}
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-period">{{ job.period }}</span>
+        </div>
+        <div class="timeline-body">
+          <h3>{{ job.role }}</h3>
+          <p class="timeline-org">{{ job.org }}</p>
+          <ul>
+            {% for point in job.points %}
+            <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Awards & Recognition</h2>
+    <div class="awards-list">
+      {% for award in awards %}
+      <div class="award-item">
+        <div class="award-header">
+          <strong>{{ award.title }}</strong>
+          <span class="award-year">{{ award.year }}</span>
+        </div>
+        <p class="award-org">{{ award.org }}</p>
+        <p class="award-detail">{{ award.detail }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      {% for cert in certs %}
+      <li>{{ cert }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

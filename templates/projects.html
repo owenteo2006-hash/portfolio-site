@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Projects — Owen Teo{% endblock %}
+
+{% block content %}
+<section class="section page-header">
+  <div class="container">
+    <h1>Projects</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="project-grid">
+      {% for project in projects %}
+      <div class="project-card status-{{ project.status }}">
+        <div class="project-card-header">
+          <h3>{{ project.title }}</h3>
+          <span class="status-badge status-{{ project.status }}">
+            {% if project.status == 'in-progress' %}In Progress
+            {% elif project.status == 'planned' %}Planned
+            {% else %}Complete{% endif %}
+          </span>
+        </div>
+        <p class="project-subtitle">{{ project.subtitle }}</p>
+        <p class="project-desc">{{ project.description }}</p>
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% if project.link %}
+        <a class="btn btn-sm" href="{{ project.link }}" target="_blank">View</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

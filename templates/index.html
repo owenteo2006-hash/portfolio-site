@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Owen Teo — Marine Engineering & Robotics{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>{{ profile.name }}</h1>
+      <p class="hero-title">{{ profile.title }}</p>
+      <p class="hero-tagline">{{ profile.tagline }}</p>
+      <div class="hero-actions">
+        <a class="btn" href="{{ url_for('projects') }}">View Projects</a>
+        <a class="btn btn-outline" href="{{ url_for('contact') }}">Contact</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="avatar-placeholder">OT</div>
+    </div>
+  </div>
+</section>
+
+<section class="section highlights">
+  <div class="container">
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <span class="highlight-icon">&#9881;</span>
+        <h3>Marine Engineering</h3>
+        <p>Singapore Polytechnic, Diploma in Marine Engineering. Hands-on in shipyard operations, mechanical fabrication, and marine safety.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">&#128268;</span>
+        <h3>Embedded Systems</h3>
+        <p>ESP32-S3 sensor nodes, Arduino control systems, Python & Flask dashboards. Building toward robotics and mechatronics.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">&#128736;</span>
+        <h3>3D Design & Fabrication</h3>
+        <p>Fusion 360, AutoCAD, FDM 3D printing. Team lead and lead 3D designer on competition robotics projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

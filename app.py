@@ -1,0 +1,33 @@
+from flask import Flask, render_template
+from data.content import PROFILE, PROJECTS, EXPERIENCE, SKILLS, AWARDS, CERTIFICATIONS
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html", profile=PROFILE)
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html", profile=PROFILE, experience=EXPERIENCE, awards=AWARDS, certs=CERTIFICATIONS)
+
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html", projects=PROJECTS)
+
+
+@app.route("/skills")
+def skills():
+    return render_template("skills.html", skills=SKILLS)
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html", profile=PROFILE)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
