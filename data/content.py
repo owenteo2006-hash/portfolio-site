@@ -8,7 +8,7 @@ PROFILE = {
     "tagline": "Robotics · Embedded Systems · Automation",
     "location": "Singapore",
     "email": "owenteo2006@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/owenteo",
+    "linkedin": "https://www.linkedin.com/in/owen-teo-411006371/",
     "github": "#",  # add when repos are public
     "about": [
         "Marine Engineering student at Singapore Polytechnic, building at the intersection of mechanical systems and electronics.",
