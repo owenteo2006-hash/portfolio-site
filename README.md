@@ -1,5 +1,7 @@
 # Owen Teo — Portfolio Site
 
+**Live site: https://portfolio-site-sxr1.onrender.com**
+
 A personal portfolio website built with Flask and Jinja2. Dark theme, plain HTML/CSS, no JavaScript framework.
 
 ---
@@ -133,11 +135,18 @@ And add to `style.css`:
 
 ---
 
-## Hosting Options
+## Hosting
+
+**Deployed on Render.com** — https://portfolio-site-sxr1.onrender.com
+
+Free tier — sleeps after 15 mins of inactivity, wakes on next visit (few second delay).
+
+**To deploy updates:**
+```bash
+git add .
+git commit -m "describe your change"
+git push
+```
+Render auto-deploys on every push to `master`.
 
 **Local (LattePanda):** run `python3.12 app.py`, access via Tailscale IP.
-
-**Render.com / Railway (free tier):**
-1. Add `gunicorn` to `requirements.txt`
-2. Set start command to `gunicorn app:app`
-3. Set `PORT` env var if required by the platform
