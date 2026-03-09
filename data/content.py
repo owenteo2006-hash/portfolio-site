@@ -11,10 +11,11 @@ PROFILE = {
     "linkedin": "https://www.linkedin.com/in/owen-teo-411006371/",
     "github": "#",  # add when repos are public
     "about": [
-        "Marine Engineering student at Singapore Polytechnic, building at the intersection of mechanical systems and electronics.",
-        "My Final Year Project is a Smart Vessel Health Monitoring System — ESP32-S3 sensor nodes feeding a Flask dashboard on a LattePanda, targeting predictive maintenance and stability monitoring.",
-        "I've led teams in competitive robotics (GNSS GIQ) and engineering challenges (Future Innovators Silver 2025), handling full design pipelines from CAD to fabrication to system integration.",
-        "Currently developing skills in embedded systems, Python, Linux, and condition monitoring — oriented toward robotics/mechatronics and a future in marine or mechanical engineering.",
+        "I am a Marine Engineering student at Singapore Polytechnic with hands-on exposure to shipyard operations, mechanical fabrication, and basic electrical/automation systems. I am building strong fundamentals in marine machinery, thermodynamics, electrical systems, engineering drawings, and safety, while actively developing skills in 3D design, microcontrollers, and Python.",
+        "I have worked in real industrial environments such as shipyards, data centres, and robotics project labs. My experience includes observing welding and pipe assembly workflows, assisting with material handling, and leading a server relocation team with zero-loss accuracy. I also design and fabricate components for robotics competitions, integrating 3D models, mechanical structures, and ESP32-based sensor systems.",
+        "One of my strengths is applied engineering design, especially seen in my role as Team Leader and Lead 3D Designer for the Future Innovators Challenge and the GNSS Robotics Project, where I designed functional 3D printed components and coordinated fabrication and integration. Through these projects, I achieved high-quality prototypes, efficient design pipelines, and strong teamwork coordination.",
+        "I am currently aspiring to roles in marine inspections, machinery diagnostics, condition monitoring, mechanical systems support, and technical fieldwork. I am eager to learn from experienced engineers and gain practical exposure to rotating machinery, vibration testing, thermography, and onboard assessments.",
+        "I bring reliability, strong communication, and a hands-on learning mindset to every project. My goal is to grow into a well-rounded marine or mechanical technician who can contribute meaningfully to shipboard operations, inspection work, automation tasks, or shore-based engineering support.",
     ],
 }
 
