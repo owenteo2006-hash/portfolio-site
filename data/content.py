@@ -11,11 +11,11 @@ PROFILE = {
     "linkedin": "https://www.linkedin.com/in/owen-teo-411006371/",
     "github": "#",  # add when repos are public
     "about": [
-        "I am a Marine Engineering student at Singapore Polytechnic with hands-on exposure to shipyard operations, mechanical fabrication, and basic electrical/automation systems. I am building strong fundamentals in marine machinery, thermodynamics, electrical systems, engineering drawings, and safety, while actively developing skills in 3D design, microcontrollers, and Python.",
-        "I have worked in real industrial environments such as shipyards, data centres, and robotics project labs. My experience includes observing welding and pipe assembly workflows, assisting with material handling, and leading a server relocation team with zero-loss accuracy. I also design and fabricate components for robotics competitions, integrating 3D models, mechanical structures, and ESP32-based sensor systems.",
-        "One of my strengths is applied engineering design, especially seen in my role as Team Leader and Lead 3D Designer for the Future Innovators Challenge and the GNSS Robotics Project, where I designed functional 3D printed components and coordinated fabrication and integration. Through these projects, I achieved high-quality prototypes, efficient design pipelines, and strong teamwork coordination.",
-        "I am currently aspiring to roles in marine inspections, machinery diagnostics, condition monitoring, mechanical systems support, and technical fieldwork. I am eager to learn from experienced engineers and gain practical exposure to rotating machinery, vibration testing, thermography, and onboard assessments.",
-        "I bring reliability, strong communication, and a hands-on learning mindset to every project. My goal is to grow into a well-rounded marine or mechanical technician who can contribute meaningfully to shipboard operations, inspection work, automation tasks, or shore-based engineering support.",
+        "Marine Engineering student at Singapore Polytechnic, building a foundation in mechanical systems, electrical engineering, and safety — with a clear direction toward robotics, automation, and mechatronics.",
+        "My hands-on experience spans shipyard operations, data centre hardware, and robotics project engineering. I've led teams in competitive robotics (GNSS GIQ Competition) and engineering challenges (Future Innovators Silver 2025), managing full design pipelines from 3D modelling in Fusion 360 through fabrication to system integration.",
+        "Most of my current and upcoming projects sit at the intersection of electronics, embedded systems, and software — ESP32-based sensor networks, Arduino control systems, robot arms, autonomous vehicles, and a Flask dashboard for my Final Year Project on vessel health monitoring. I build and break things to understand how they work.",
+        "Actively developing: Python, C++ (Arduino), ESP32/microcontrollers, CAD (AutoCAD, Fusion 360), Linux, and 3D printing. Targeting Robotics & Mechatronics engineering at university.",
+        "If you work in robotics, automation, embedded systems, or marine engineering — I'd be glad to connect.",
     ],
 }
 
