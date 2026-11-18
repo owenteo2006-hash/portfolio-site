@@ -1,32 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-SG">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Owen Teo{% endblock %}</title>
+  <title>{% block title %}{{ profile.name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ profile.description }}{% endblock %}" />
+
+  <!-- Link previews on LinkedIn, WhatsApp and Telegram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ profile.name }}" />
+  <meta property="og:title" content="{{ self.title() }}" />
+  <meta property="og:description" content="{{ self.description() }}" />
+  <meta property="og:url" content="{{ profile.site_url }}{{ request.path }}" />
+
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
 
-  <nav class="nav">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Main">
     <div class="nav-inner">
-      <a class="nav-brand" href="{{ url_for('index') }}">Owen Teo</a>
+      <a class="nav-brand" href="{{ url_for('index') }}">{{ profile.name }}</a>
       <ul class="nav-links">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About</a></li>
-        <li><a href="{{ url_for('projects') }}">Projects</a></li>
-        <li><a href="{{ url_for('skills') }}">Skills</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        {% for endpoint, label in [('index', 'Home'), ('about', 'About'), ('projects', 'Projects'), ('skills', 'Skills'), ('contact', 'Contact')] %}
+        <li>
+          <a href="{{ url_for(endpoint) }}"{% if request.endpoint == endpoint %} class="active" aria-current="page"{% endif %}>{{ label }}</a>
+        </li>
+        {% endfor %}
       </ul>
     </div>
   </nav>
 
-  <main class="main">
+  <main class="main" id="main">
     {% block content %}{% endblock %}
   </main>
 
   <footer class="footer">
-    <p>Owen Teo &mdash; Singapore &mdash; Marine Engineering / Robotics</p>
+    <p>
+      {{ profile.name }} · {{ profile.location }} ·
+      <a href="mailto:{{ profile.email }}">Email</a> ·
+      <a href="{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      {% if profile.github != '#' %} · <a href="{{ profile.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
+    </p>
   </footer>
 
 </body>

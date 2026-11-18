@@ -1,121 +1,108 @@
-# Owen Teo — Portfolio Site
+# Owen Teo: portfolio site
 
-**Live site: https://portfolio-site-sxr1.onrender.com**
+My personal portfolio site. I built it with Flask and plain HTML and CSS to show my projects, experience and skills.
 
-A personal portfolio website built with Flask and Jinja2. Dark theme, plain HTML/CSS, no JavaScript framework.
+**Live site:** https://portfolio-site-sxr1.onrender.com
 
----
+![Home page of the portfolio site](docs/screenshot-home.png)
 
-## Pages
+## What's on it
 
-| Route | Content |
-|-------|---------|
-| `/` | Hero section, 3 highlight cards (Marine Eng, Embedded Systems, 3D Design) |
-| `/about` | Bio, work experience timeline, awards, certifications |
-| `/projects` | Project cards with status badges (In Progress / Planned / Complete) |
-| `/skills` | Skills grouped by category |
-| `/contact` | Email, LinkedIn, location |
+| Page | What it shows |
+| --- | --- |
+| `/` | Intro and three highlight cards |
+| `/about` | Bio, experience, education, awards and certifications |
+| `/projects` | Project cards with dates, status and tags |
+| `/skills` | Skills grouped by area |
+| `/contact` | Email, LinkedIn and location |
 
----
+## Built with
 
-## How to Run
+- **Flask** for the routes, with **Jinja2** templates for the HTML
+- Plain CSS with a dark theme, and no JavaScript framework
+- **Gunicorn** on **Render**, which redeploys the site every time I push to `master`
 
-```bash
-cd /home/Tesla/projects/portfolio-site
-python3.12 app.py
-```
+## Run it on your computer
 
-Open in browser:
-- `http://localhost:5000` (usually works on WSL2)
-- If not: run `hostname -I`, use the first IP — `http://172.x.x.x:5000`
+1. Clone the repo and go into the folder:
+   ```bash
+   git clone https://github.com/owenteo2006-hash/portfolio-site.git
+   cd portfolio-site
+   ```
+2. Make a virtual environment and install the requirements:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+3. Start the site with auto-reload on:
+   ```bash
+   FLASK_DEBUG=1 python app.py
+   ```
+4. Open http://127.0.0.1:5000. On WSL2, if that doesn't load, run `hostname -I` and use the first IP address instead.
 
----
+Debug mode stays off unless you set `FLASK_DEBUG=1`. The app listens on every network interface, so I don't want Flask's debugger reachable from other devices by accident.
 
-## How It Works
+I also run it on my LattePanda IOTA and open it from my other devices over Tailscale.
 
-**Flask** starts a web server. When a browser requests a URL like `/projects`, Flask runs the matching function in `app.py`, which calls `render_template()`.
+## How it works
 
-**Jinja2** (built into Flask) is the templating engine. It takes HTML files with placeholders like `{{ profile.name }}` and `{% for job in experience %}`, injects real data, and sends finished HTML to the browser. The server does all the work — no JavaScript required.
-
-**Data flow:**
+When a browser asks for a page like `/projects`, Flask runs the matching function in `app.py`. That function hands the data to a template, and Jinja2 fills in the HTML before it goes back to the browser. The server does all the work, so the pages need no JavaScript.
 
 ```
 browser requests /projects
        ↓
 Flask matches @app.route("/projects")
        ↓
-projects() function runs, passes PROJECTS list to template
+projects() passes the PROJECTS list to projects.html
        ↓
-Jinja2 fills projects.html — loops over each project, renders cards
+Jinja2 loops over the list and builds one card per project
        ↓
-finished HTML sent back to browser
+the finished HTML goes back to the browser
 ```
 
----
-
-## File Responsibilities
-
-```
-app.py           — URL routing only, no content (30 lines)
-data/content.py  — ALL text and data, edit this to update the site
-templates/       — HTML structure + Jinja2 loops and variables
-static/css/      — styling only, no logic
-```
-
-### Template Inheritance
-
-`base.html` contains the nav, footer, and `<head>`. Every other page does:
+`base.html` holds the nav, the footer and the page head, so I only write them once. Every other page extends it:
 
 ```html
 {% extends "base.html" %}
 {% block content %}
-  ... page content here ...
+  ... page content ...
 {% endblock %}
 ```
 
-The nav is written once. Change it in `base.html` and all pages update.
+## Folders
 
----
+```
+app.py              routes only, no content
+data/content.py     every piece of text on the site
+templates/          HTML structure, Jinja2 loops and variables
+static/css/         styling
+static/favicon.svg  the tab icon
+tests/              checks that every page loads
+docs/               the screenshot in this README
+```
 
-## Updating Content
+## Updating the content
 
-All content lives in `data/content.py`. You never need to touch HTML for a content change.
-
-**Add a new project** — append a dict to the `PROJECTS` list:
+All the text lives in `data/content.py`, so a content change never needs HTML. To add a project, add a dict to the `PROJECTS` list:
 
 ```python
 {
-    "title": "My New Project",
-    "subtitle": "Description of role",
-    "description": "What it does.",
+    "title": "My new project",
+    "subtitle": "Personal project",
+    "period": "Nov 2026 – present",
+    "description": "What it does and what I did.",
     "tags": ["ESP32", "Python"],
-    "status": "in-progress",  # "in-progress" | "planned" | "complete"
+    "status": "in-progress",  # "in-progress", "planned" or "complete"
     "link": None,  # or "https://github.com/..."
 },
 ```
 
-The template automatically renders a new card for it.
+The projects page picks it up and builds a new card. The bio is the `about` list in `PROFILE`, and skills are grouped in `SKILLS`.
 
-**Update your bio** — edit the `about` list in `PROFILE`.
+## Adding a profile photo
 
-**Add a skill** — add a string to the relevant list in `SKILLS`.
-
----
-
-## Styling
-
-Dark theme matches the ricing setup:
-- Background: `#0c0b0f` (same as WezTerm)
-- Accent: `#8b5cf6` (purple)
-- Font stack: Iosevka SS14 → Cascadia Code → Fira Code → monospace
-
-All colours are CSS variables at the top of `static/css/style.css`. One variable change recolours the whole site.
-
----
-
-## Adding a Profile Photo
-
-Drop a photo at `static/img/photo.jpg`, then in `templates/index.html` replace:
+Put the photo at `static/img/photo.jpg`, then in `templates/index.html` replace:
 
 ```html
 <div class="avatar-placeholder">OT</div>
@@ -127,26 +114,29 @@ with:
 <img src="{{ url_for('static', filename='img/photo.jpg') }}" alt="Owen Teo" class="avatar" />
 ```
 
-And add to `style.css`:
+and add this to `style.css`:
 
 ```css
 .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
 ```
 
----
+## Tests
 
-## Hosting
+The tests load every page and check that an unknown address returns a 404.
 
-**Deployed on Render.com** — https://portfolio-site-sxr1.onrender.com
-
-Free tier — sleeps after 15 mins of inactivity, wakes on next visit (few second delay).
-
-**To deploy updates:**
 ```bash
-git add .
-git commit -m "describe your change"
-git push
+pip install -r requirements-dev.txt
+pytest
 ```
-Render auto-deploys on every push to `master`.
 
-**Local (LattePanda):** run `python3.12 app.py`, access via Tailscale IP.
+## Styling
+
+The dark theme matches my WezTerm terminal setup. Every colour is a CSS variable at the top of `static/css/style.css`, so changing one variable recolours the whole site.
+
+- Background: `#0c0b0f`
+- Accent: `#8b5cf6` (purple)
+- Fonts: Iosevka SS14, then Cascadia Code, then Fira Code, then the system's monospace font
+
+## Deploying
+
+The site runs on Render's free tier. It sleeps after 15 minutes without visitors, so the first visit after that takes a few seconds. Render rebuilds the site whenever I push to `master`.

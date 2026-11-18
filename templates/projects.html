@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Projects — Owen Teo{% endblock %}
+{% block title %}Projects · {{ profile.name }}{% endblock %}
 
 {% block content %}
 <section class="section page-header">
@@ -12,16 +12,19 @@
   <div class="container">
     <div class="project-grid">
       {% for project in projects %}
-      <div class="project-card status-{{ project.status }}">
+      <article class="project-card card-{{ project.status }}">
         <div class="project-card-header">
           <h3>{{ project.title }}</h3>
           <span class="status-badge status-{{ project.status }}">
-            {% if project.status == 'in-progress' %}In Progress
+            {% if project.status == 'in-progress' %}In progress
             {% elif project.status == 'planned' %}Planned
             {% else %}Complete{% endif %}
           </span>
         </div>
         <p class="project-subtitle">{{ project.subtitle }}</p>
+        {% if project.period %}
+        <p class="project-period">{{ project.period }}</p>
+        {% endif %}
         <p class="project-desc">{{ project.description }}</p>
         <div class="project-tags">
           {% for tag in project.tags %}
@@ -29,9 +32,9 @@
           {% endfor %}
         </div>
         {% if project.link %}
-        <a class="btn btn-sm" href="{{ project.link }}" target="_blank">View</a>
+        <a class="btn btn-sm" href="{{ project.link }}" target="_blank" rel="noopener noreferrer">View</a>
         {% endif %}
-      </div>
+      </article>
       {% endfor %}
     </div>
   </div>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Page not found · {{ profile.name }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container not-found">
+    <h1>Page not found</h1>
+    <p>That page doesn't exist. It may have moved when I updated the site.</p>
+    <a class="btn" href="{{ url_for('index') }}">Back to home</a>
+  </div>
+</section>
+{% endblock %}
